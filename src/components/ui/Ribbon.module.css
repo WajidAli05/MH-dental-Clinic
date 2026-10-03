@@ -1,0 +1,51 @@
+.band {
+  position: relative;
+  width: 110%;
+  margin-inline-start: -5%;
+  padding: 14px 0;
+  transform: rotate(var(--tilt));
+  overflow: hidden;
+  border-block: 2px solid var(--ink);
+  direction: ltr;
+}
+.lime {
+  background: var(--lime);
+  color: var(--ink);
+}
+.ink {
+  background: var(--ink);
+  color: var(--lime);
+}
+.track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.group {
+  display: flex;
+}
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding-inline-end: 28px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-variation-settings: "wdth" 75;
+  font-size: clamp(26px, 3.4vw, 48px);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+:global(html[lang="ur"]) .item {
+  font-family: var(--font-nastaliq), serif;
+  font-weight: 700;
+  text-transform: none;
+  font-size: clamp(22px, 2.6vw, 36px);
+  line-height: 1.8;
+}
+.star {
+  width: 0.6em;
+  height: 0.6em;
+  fill: currentColor;
+}

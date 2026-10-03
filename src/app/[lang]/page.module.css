@@ -1,0 +1,518 @@
+/* Shared */
+.lede {
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 46ch;
+}
+.ledeSmall {
+  color: var(--text-secondary);
+  max-width: 34ch;
+}
+.ribbonGap {
+  position: relative;
+  z-index: 3;
+  padding: 26px 0;
+  overflow: hidden;
+}
+
+/* ---------- Before and after ---------- */
+.results {
+  padding: clamp(90px, 11vw, 150px) 0;
+}
+.resultsHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 28px);
+}
+.resultCard {
+  margin: 0;
+  padding: 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: calc(var(--radius) + 8px);
+  background: var(--paper);
+  transition: box-shadow 0.5s var(--ease-spring), transform 0.5s var(--ease-spring);
+}
+.resultCard:hover {
+  box-shadow: 8px 8px 0 var(--ink);
+  transform: translate(-3px, -3px);
+}
+.resultName {
+  padding: 14px 8px 4px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-variation-settings: "wdth" 78;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+:global(html[lang="ur"]) .resultName {
+  font-family: var(--font-nastaliq), serif;
+  text-transform: none;
+  font-size: 18px;
+}
+
+/* ---------- Prices (ink band, scales in) ---------- */
+.prices {
+  padding: clamp(96px, 12vw, 160px) 0;
+  background: var(--ink);
+  color: var(--canvas);
+  transform-origin: 50% 0;
+  overflow: hidden;
+}
+.prices :global(.label) {
+  color: var(--lime);
+}
+.pricesTitle {
+  margin-top: 14px;
+  max-width: 14ch;
+}
+.pricesTitle em {
+  color: var(--lime);
+}
+.prices .lede {
+  color: rgba(236, 238, 234, 0.72);
+}
+.priceGrid {
+  margin-top: clamp(40px, 6vw, 72px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.priceCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--radius);
+  background: #1a1f23;
+  border: 1.5px solid rgba(236, 238, 234, 0.2);
+  transition: transform 0.5s var(--ease-spring), border-color 0.4s;
+}
+.priceCard:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  border-color: var(--lime);
+}
+.priceAsk {
+  background: transparent;
+  border-style: dashed;
+}
+.priceSticker {
+  position: absolute;
+  top: -40px;
+  inset-inline-end: -16px;
+  --size: 104px;
+}
+.priceName {
+  font-size: 18px;
+  font-weight: 500;
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: clamp(72px, 8vw, 124px);
+  color: var(--canvas);
+}
+.priceCard:first-child .price {
+  color: var(--lime);
+}
+.priceIcon {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--lime);
+}
+.currency {
+  font-size: 13px;
+}
+.priceNote {
+  color: var(--aqua);
+  font-size: 14px;
+}
+.points {
+  list-style: none;
+  margin: 6px 0 auto;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  color: rgba(236, 238, 234, 0.82);
+}
+.points li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.points li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  flex-shrink: 0;
+  translate: 0 -2px;
+}
+.priceCard :global(.btn) {
+  margin-top: 18px;
+  align-self: flex-start;
+}
+.btnOnInk {
+  background: transparent;
+  color: var(--canvas);
+  border: 1.5px solid rgba(236, 238, 234, 0.5);
+}
+.btnOnInk::before {
+  background: var(--lime);
+}
+.btnOnInk:hover {
+  color: var(--ink);
+}
+
+/* ---------- Doctor ---------- */
+.doctor {
+  padding: clamp(80px, 10vw, 140px) 0;
+}
+.doctorGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+}
+.doctorArt {
+  position: relative;
+}
+.doctorPhoto {
+  aspect-ratio: 4 / 5;
+  border-radius: calc(var(--radius) * 1.4);
+  overflow: hidden;
+  background: var(--panel);
+  border: 1.5px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--lime), 10px 10px 0 1.5px var(--ink);
+}
+.doctorSticker {
+  position: absolute;
+  bottom: -36px;
+  inset-inline-end: -28px;
+  --size: 130px;
+}
+.doctorName {
+  margin-top: 12px;
+  font-size: clamp(64px, 9vw, 150px);
+}
+.doctorText {
+  margin-top: 22px;
+  font-size: clamp(19px, 1.6vw, 23px);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 40ch;
+}
+.doctorPoints {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.doctorPoints li {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  font-size: 15px;
+  transition: background-color 0.3s, transform 0.4s var(--ease-spring);
+}
+.doctorPoints li:hover {
+  background: var(--lime);
+  transform: rotate(-3deg) scale(1.05);
+}
+
+/* ---------- FAQ ---------- */
+.faq {
+  padding: clamp(80px, 10vw, 140px) 0;
+}
+.faqGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+}
+.faqList {
+  border-top: 1.5px solid var(--ink);
+}
+.faqItem {
+  border-bottom: 1.5px solid var(--ink);
+  transition: background-color 0.4s var(--ease-out);
+}
+.faqItem[open] {
+  background: var(--lime);
+}
+.faqItem::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size 0.55s var(--ease-out), content-visibility 0.55s allow-discrete;
+}
+.faqItem[open]::details-content {
+  block-size: auto;
+}
+.faqQ {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 14px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-variation-settings: "wdth" 80;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.05;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+}
+:global(html[lang="ur"]) .faqQ {
+  font-family: var(--font-nastaliq), serif;
+  text-transform: none;
+  line-height: 1.8;
+  font-size: clamp(18px, 1.8vw, 24px);
+}
+.faqQ::-webkit-details-marker {
+  display: none;
+}
+.faqNum {
+  font-family: var(--font-jetbrains), monospace;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+.faqQ i {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  transition: transform 0.5s var(--ease-spring);
+}
+.faqQ i::before,
+.faqQ i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 2px;
+  background: var(--ink);
+  translate: -50% -50%;
+}
+.faqQ i::after {
+  rotate: 90deg;
+  transition: rotate 0.5s var(--ease-spring);
+}
+.faqItem[open] .faqQ i {
+  transform: rotate(180deg);
+}
+.faqItem[open] .faqQ i::after {
+  rotate: 0deg;
+}
+.faqA {
+  padding: 0 72px 26px 56px;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+:global(html[dir="rtl"]) .faqA {
+  padding: 0 56px 26px 72px;
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  padding: clamp(80px, 10vw, 140px) 0 clamp(96px, 12vw, 160px);
+}
+.contactGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+.contactTitle {
+  font-size: clamp(56px, 8vw, 132px);
+}
+.contactCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 28px 0 44px;
+}
+.infoCard {
+  position: sticky;
+  top: 100px;
+  border-radius: calc(var(--radius) * 1.2);
+  overflow: hidden;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+.map {
+  aspect-ratio: 4 / 3;
+  background: var(--panel);
+  border-bottom: 1.5px solid var(--ink);
+}
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.6) contrast(1.05);
+}
+.infoBody {
+  padding: 24px 26px 28px;
+  display: grid;
+  gap: 12px;
+}
+.infoLine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--ink-soft);
+}
+.infoLine a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 4px;
+}
+.openDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  box-shadow: 0 0 0 4px rgba(31, 143, 85, 0.18);
+}
+.directions {
+  justify-self: start;
+  font-weight: 500;
+  color: var(--ink);
+  background: linear-gradient(transparent 60%, var(--lime) 60%);
+}
+.social {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.social :global(.label) {
+  margin-inline-end: 8px;
+  color: var(--text-secondary);
+}
+.social a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  transition: background-color 0.3s, color 0.3s, transform 0.4s var(--ease-spring);
+}
+.social a:hover {
+  background: var(--ink);
+  color: var(--lime);
+  transform: rotate(-10deg) scale(1.08);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 40px 0 36px;
+  border-top: 1.5px solid var(--ink);
+  overflow: hidden;
+}
+.footerBig {
+  font-size: clamp(90px, 19vw, 330px);
+  text-align: center;
+  transform-origin: 50% 100%;
+  white-space: nowrap;
+}
+:global(html[lang="ur"]) .footerBig {
+  font-size: clamp(70px, 13vw, 220px);
+}
+.footerGrid {
+  margin-top: clamp(48px, 6vw, 88px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: 24px;
+}
+.footerBrand {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.footerName {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-variation-settings: "wdth" 78;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+.footerMuted {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+.footerAi {
+  justify-self: center;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1.5px dashed var(--line-strong);
+  color: var(--ink-soft);
+  font-size: 13px;
+  max-width: 54ch;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .faqGrid,
+  .contactGrid,
+  .doctorGrid {
+    grid-template-columns: 1fr;
+  }
+  .infoCard {
+    position: static;
+  }
+  .priceGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .doctorPhoto {
+    max-width: 440px;
+  }
+  .footerGrid {
+    grid-template-columns: 1fr;
+  }
+  .footerAi {
+    justify-self: start;
+  }
+}
+@media (max-width: 720px) {
+  .resultsGrid {
+    grid-template-columns: 1fr;
+  }
+  .faqA {
+    padding: 0 14px 22px 14px !important;
+  }
+  .faqQ {
+    gap: 12px;
+    padding: 18px 8px;
+  }
+  .doctorSticker {
+    inset-inline-end: 0;
+  }
+}

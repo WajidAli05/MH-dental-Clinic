@@ -1,0 +1,20 @@
+﻿import { chromium } from "@playwright/test";
+const browser = await chromium.launch({ args: ["--use-angle=d3d11", "--ignore-gpu-blocklist"] });
+const ctx = await browser.newContext({ viewport: { width: 402, height: 530 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+const page = await ctx.newPage();
+await page.goto("http://localhost:3000/en", { waitUntil: "load" });
+await page.addStyleTag({ content: "nextjs-portal{display:none!important}" });
+await page.evaluate(() => { const r = document.querySelector("#services article:nth-child(9)").getBoundingClientRect(); scrollTo(0, scrollY + r.top - 80); });
+await page.waitForTimeout(12000);
+await page.screenshot({ path: "../media-review/shots/m-services.png" });
+await page.evaluate(() => document.querySelector("#learn").scrollIntoView());
+const dot = page.locator('#learn button[aria-label^="Missing tooth"]');
+for (let i = 0; i < 40 && !((await dot.getAttribute("style")) ?? "").includes("translate3d"); i++) await page.waitForTimeout(500);
+await page.evaluate(() => { const r = document.querySelector("#learn [class*=stage]").getBoundingClientRect(); scrollTo(0, scrollY + r.top - 10); });
+await page.waitForTimeout(800);
+await dot.tap();
+await page.waitForTimeout(1200);
+await page.screenshot({ path: "../media-review/shots/m-mouth.png" });
+await browser.close();
+console.log("done");
+
